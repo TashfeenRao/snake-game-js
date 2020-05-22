@@ -1,5 +1,6 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -11,8 +12,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: [ /\.vert$/, /\.frag$/ ],
+        use: require.resolve('raw-loader')
+      },
+      {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
+        include: path.resolve(__dirname, 'src/'),
         use: {
           loader: 'babel-loader',
           options: {
@@ -34,5 +40,9 @@ module.exports = {
           to: path.resolve(__dirname, 'dist')}
       ],
     }),
-  ],
+    new webpack.DefinePlugin({
+      'CANVAS_RENDERER': JSON.stringify(true),
+      'WEBGL_RENDERER': JSON.stringify(true)
+      })
+  ]
 };
