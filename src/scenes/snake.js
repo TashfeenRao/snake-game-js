@@ -99,12 +99,21 @@ class snakeScene extends Phaser.Scene {
           this.direction = this.heading;
 
           //  Update the body segments
-          Phaser.Actions.ShiftPosition(this.snakeBody.getChildren(), this.headPosition.x * 16, this.headPosition.y * 16, 1);
+          Phaser.Actions.ShiftPosition(this.snakeBody.getChildren(), this.headPosition.x * 16, this.headPosition.y * 16, 1, this.snakeTail);
+          var hitBody = Phaser.Actions.GetFirst(this.snakeBody.getChildren(), { x: this.snakeHead.x, y: this.snakeHead.y }, 1);
+          if (hitBody) {
+            console.log('dead');
+            this.alive = false;
 
-          //  Update the timer ready for the next movement
-          this.moveTime = time + this.snakeSpeed;
+            return false;
+            
+          } else {
+            //Update the timer ready for the next movement
+            this.moveTime = time + this.snakeSpeed;
 
-          return true;
+            return true;
+            
+          }
       },
 
       updateMoves: function (time)
