@@ -34,6 +34,7 @@ class snakeScene extends Phaser.Scene {
           this.setOrigin(0);
 
           this.total = 0;
+          this.score = 0
 
           scene.children.add(this);
       },
@@ -157,6 +158,8 @@ class snakeScene extends Phaser.Scene {
               this.grow();
 
               food.eatFood();
+              
+              this.score =+ 2;
 
               return true;
           }
