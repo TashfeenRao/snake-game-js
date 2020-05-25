@@ -111,6 +111,8 @@ class MainScene extends Phaser.Scene {
       }
     });
     snake = new Createsnake(this, 8, 8);
+     
+    cursors = this.input.keyboard.createCursorKeys();
   }
   update (time, delta){
     
