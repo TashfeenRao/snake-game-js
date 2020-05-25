@@ -14,6 +14,7 @@ class snakeScene extends Phaser.Scene {
   
   preload(){
     this.load.image('snake','assets/body.png');
+    this.load.image('snake-body','assets/snake-body.png');
     this.load.image('snake-food','assets/food.png');
 
   }
@@ -35,7 +36,16 @@ class snakeScene extends Phaser.Scene {
           this.total = 0;
 
           scene.children.add(this);
-      }
+      },
+      eatFood: function ()
+        {
+            this.total++;
+
+            var x = Phaser.Math.Between(0, 39);
+            var y = Phaser.Math.Between(0, 29);
+
+            this.setPosition(x * 16, y * 16);
+        }
 
   });
     const Createsnake = new Phaser.Class({
@@ -59,6 +69,7 @@ class snakeScene extends Phaser.Scene {
 
           this.heading = RIGHT;
           this.direction = RIGHT;
+          this.snakeTail = new Phaser.Geom.Point(x, y);
       },
 
       move: function (time)
@@ -130,6 +141,29 @@ class snakeScene extends Phaser.Scene {
           {
               this.heading = DOWN;
           }
+      },
+
+      grow: function ()
+        {
+            var newPart = this.snakeBody.create(this.snakeTail.x, this.snakeTail.y, 'snake-body');
+
+            newPart.setOrigin(0);
+        },
+
+      collideWithFood: function (food)
+      {
+          if (this.snakeHead.x === food.x && this.snakeHead.y === food.y)
+          {
+              this.grow();
+
+              food.eatFood();
+
+              return true;
+          }
+          else
+          {
+              return false;
+          }
       }
     });
     snake = new Createsnake(this, 8, 8);
@@ -160,7 +194,11 @@ class snakeScene extends Phaser.Scene {
         snake.goDown();
     }
 
-    snake.updateMoves(time);
+    if (snake.updateMoves(time))
+    {
+
+        snake.collideWithFood(food);
+    }
     
   }
 }
