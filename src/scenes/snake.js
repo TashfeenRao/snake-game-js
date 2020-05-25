@@ -34,13 +34,15 @@ class snakeScene extends Phaser.Scene {
           this.setOrigin(0);
 
           this.total = 0;
-          this.score = 0
+          this.score = 0;
 
           scene.children.add(this);
       },
       eatFood: function ()
         {
             this.total++;
+            this.score += 4;
+
 
             var x = Phaser.Math.Between(0, 39);
             var y = Phaser.Math.Between(0, 29);
@@ -158,8 +160,13 @@ class snakeScene extends Phaser.Scene {
               this.grow();
 
               food.eatFood();
+              console.log(food.score)
+
               
-              this.score =+ 2;
+              if (food.total% 5 === 0 && this.snakeSpeed > 30) {
+                this.snakeSpeed -= 5;
+                
+              }
 
               return true;
           }
