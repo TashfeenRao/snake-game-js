@@ -3,19 +3,41 @@ import Phaser from 'phaser/dist/phaser';
 
 var snake;
 var cursors;
+var food;
 
 var UP = 0;
 var DOWN = 1;
 var LEFT = 2;
 var RIGHT = 3;
 
-class MainScene extends Phaser.Scene {
+class snakeScene extends Phaser.Scene {
   
   preload(){
     this.load.image('snake','assets/body.png');
+    this.load.image('snake-food','assets/food.png');
 
   }
   create() {
+    const Food = new Phaser.Class({
+
+      Extends: Phaser.GameObjects.Image,
+
+      initialize:
+
+      function Food (scene, x, y)
+      {
+          Phaser.GameObjects.Image.call(this, scene)
+
+          this.setTexture('snake-food');
+          this.setPosition(x * 16, y * 16);
+          this.setOrigin(0);
+
+          this.total = 0;
+
+          scene.children.add(this);
+      }
+
+  });
     const Createsnake = new Phaser.Class({
 
       initialize:
@@ -111,6 +133,7 @@ class MainScene extends Phaser.Scene {
       }
     });
     snake = new Createsnake(this, 8, 8);
+    food = new Food(this, 3, 4);
      
     cursors = this.input.keyboard.createCursorKeys();
   }
@@ -142,4 +165,4 @@ class MainScene extends Phaser.Scene {
   }
 }
 
-export default MainScene
+export default snakeScene

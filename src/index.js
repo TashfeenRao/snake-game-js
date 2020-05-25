@@ -1,6 +1,6 @@
 import Phaser from 'phaser/dist/phaser';
 
-import MainScene from "./scenes/snake";
+import snakeScene from "./scenes/snake";
 
 
 const gameConfig = {
@@ -11,7 +11,7 @@ const gameConfig = {
   physics: {
     default: 'arcade',
     arcade: {gravity: { y: 200 }}},
-  scene: MainScene
+  scene: snakeScene
 };
 
 new Phaser.Game(gameConfig);
