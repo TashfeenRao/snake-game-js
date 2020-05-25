@@ -11,6 +11,9 @@ var LEFT = 2;
 var RIGHT = 3;
 
 class snakeScene extends Phaser.Scene {
+  constructor() {
+    super({ key: 'snakeScene' });
+  }
   
   preload(){
     this.load.image('snake','assets/body.png');
@@ -163,13 +166,15 @@ class snakeScene extends Phaser.Scene {
         },
 
       collideWithFood: function (food)
-      {
+      {   
+          const scoreBoard = document.querySelector("#score");
+
           if (this.snakeHead.x === food.x && this.snakeHead.y === food.y)
           {
               this.grow();
 
               food.eatFood();
-              console.log(food.score)
+              scoreBoard.innerHTML = food.score;
 
               
               if (food.total% 5 === 0 && this.snakeSpeed > 30) {
