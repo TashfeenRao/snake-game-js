@@ -66,12 +66,12 @@ class MainScene extends Phaser.Scene {
           Phaser.Actions.ShiftPosition(this.snakeBody.getChildren(), this.headPosition.x * 16, this.headPosition.y * 16, 1);
 
           //  Update the timer ready for the next movement
-          this.moveTime = time + this.speed;
+          this.moveTime = time + this.snakeSpeed;
 
           return true;
       },
 
-      update: function (time)
+      updateMoves: function (time)
         {
             if (time >= this.moveTime)
             {
@@ -115,6 +115,29 @@ class MainScene extends Phaser.Scene {
     cursors = this.input.keyboard.createCursorKeys();
   }
   update (time, delta){
+    if (!snake.alive)
+    {
+        return;
+    }
+
+    if (cursors.left.isDown)
+    {
+        snake.goLeft();
+    }
+    else if (cursors.right.isDown)
+    {
+        snake.goRight();
+    }
+    else if (cursors.up.isDown)
+    {
+        snake.goUp();
+    }
+    else if (cursors.down.isDown)
+    {
+        snake.goDown();
+    }
+
+    snake.updateMoves(time);
     
   }
 }
