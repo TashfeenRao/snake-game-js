@@ -38,7 +38,7 @@ class MainScene extends Phaser.Scene {
           this.heading = RIGHT;
           this.direction = RIGHT;
       },
-      
+
       move: function (time)
       {
           switch (this.heading)
@@ -78,6 +78,37 @@ class MainScene extends Phaser.Scene {
                 return this.move(time);
             }
         },
+      goLeft: function ()
+      {
+          if (this.direction === UP || this.direction === DOWN)
+          {
+              this.heading = LEFT;
+          }
+      },
+
+      goRight: function ()
+      {
+          if (this.direction === UP || this.direction === DOWN)
+          {
+              this.heading = RIGHT;
+          }
+      },
+
+      goUp: function ()
+      {
+          if (this.direction === LEFT || this.direction === RIGHT)
+          {
+              this.heading = UP;
+          }
+      },
+
+      goDown: function ()
+      {
+          if (this.direction === LEFT || this.direction === RIGHT)
+          {
+              this.heading = DOWN;
+          }
+      }
     });
     snake = new Createsnake(this, 8, 8);
   }
