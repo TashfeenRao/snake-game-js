@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import {userForm, operationsBtn} from '../utils/form'
-
+import {userForm, operationsBtn, generateTableHead, generateTableContent} from '../utils/form'
+import {getAllUserScores} from '../utils/dashboard'
 var el;
 class welcomeScene extends Phaser.Scene {
 
@@ -15,7 +15,7 @@ class welcomeScene extends Phaser.Scene {
     
 	}
 
-	create() {
+	async create() {
 		 var bg = this.add.image(0, 0,'background');
 		  bg.setOrigin(0,0);
 
@@ -41,6 +41,24 @@ class welcomeScene extends Phaser.Scene {
         console.log("name empty")
       }
       
+
+    })
+    restartBtn.addEventListener('click',async () => {
+      try {
+        const data = await getAllUserScores()
+        console.log(data.data.result)
+        const getTable = document.querySelector("#table")
+        getTable.innerHTML = ''
+        generateTableContent(getTable, data.data.result)
+        generateTableHead(getTable, data.data.result)
+        
+
+        
+      } catch (error) {
+        console.log(error)
+        
+      }
+
 
     })
 

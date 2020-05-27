@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
-
 import snakeScene from "./scenes/snake";
 import welcomeScene from "./scenes/welcome"
+
 
 
 // Our game scene

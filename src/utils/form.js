@@ -15,18 +15,45 @@ const operationsBtn = () => {
   div.setAttribute('id', "opsBtn")
 
   const restart = document.createElement('button');
-  restart.innerText = "restart game"
+  restart.innerText = "Game scores"
   restart.setAttribute("type", "button")
   restart.setAttribute('id', "gameRestart")
 
-  const stop = document.createElement('button');
-  stop.innerText = "stop game"
-  stop.setAttribute("type", "button")
-  stop.setAttribute('id', "stop")
+  
+  
 
   div.append(restart)
   return div
 
 }
 
-export { userForm, operationsBtn}
+const generateTableContent = (table, mydata) => {
+  const tbody = table.createTBody();
+
+  mydata.forEach((element) => {
+    const row = tbody.insertRow();
+    Object.keys(element).forEach((key) => {
+      if (key) {
+        const cell = row.insertCell();
+        const text = document.createTextNode(element[key]);
+        cell.appendChild(text);
+      }
+    });
+  });
+}
+const generateTableHead = (table, mydata) => {
+    const thead = table.createTHead();
+    const row = thead.insertRow();
+    const data = Object.keys(mydata[0]);
+    data.forEach((key) => {
+      const th = document.createElement('th');
+      const text = document.createTextNode(key.toUpperCase());
+      th.appendChild(text);
+      row.appendChild(th);
+    });
+  
+}
+
+
+
+export { userForm, operationsBtn, generateTableHead, generateTableContent}

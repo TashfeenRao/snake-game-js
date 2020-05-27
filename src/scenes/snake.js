@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-
+import {postUserScore }from '../utils/dashboard'
 
 
 var snake;
@@ -22,7 +22,7 @@ class snakeScene extends Phaser.Scene {
     this.load.image('snake-food','assets/food.png');
 
   }
-  create() {
+  async create() {
     const Food = new Phaser.Class({
 
       Extends: Phaser.GameObjects.Image,
@@ -79,7 +79,7 @@ class snakeScene extends Phaser.Scene {
           this.snakeTail = new Phaser.Geom.Point(x, y);
       },
 
-      move: function (time)
+      move: async function (time)
       {
           switch (this.heading)
           {
@@ -109,8 +109,18 @@ class snakeScene extends Phaser.Scene {
             
             this.alive = false;
             console.log('dead');
+            
+            const playername = document.getElementById("playerName").innerHTML;
+            console.log(playername)
             console.log(snake.alive);
             console.log(food.score);
+            
+            try {
+                await postUserScore(playername, food.score)
+            }catch (error) {
+                console.log(error)
+            }
+            
 
             return false;
             
@@ -180,6 +190,7 @@ class snakeScene extends Phaser.Scene {
 
               food.eatFood();
               scoreBoard.innerHTML = food.score;
+              
               
 
               
