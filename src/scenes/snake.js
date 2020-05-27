@@ -1,4 +1,5 @@
-import Phaser from 'phaser/dist/phaser';
+import Phaser from 'phaser';
+
 
 
 var snake;
@@ -105,8 +106,11 @@ class snakeScene extends Phaser.Scene {
           Phaser.Actions.ShiftPosition(this.snakeBody.getChildren(), this.headPosition.x * 16, this.headPosition.y * 16, 1, this.snakeTail);
           var hitBody = Phaser.Actions.GetFirst(this.snakeBody.getChildren(), { x: this.snakeHead.x, y: this.snakeHead.y }, 1);
           if (hitBody) {
-            console.log('dead');
+            
             this.alive = false;
+            console.log('dead');
+            console.log(snake.alive);
+            console.log(food.score);
 
             return false;
             
@@ -168,6 +172,7 @@ class snakeScene extends Phaser.Scene {
       collideWithFood: function (food)
       {   
           const scoreBoard = document.querySelector("#score");
+          
 
           if (this.snakeHead.x === food.x && this.snakeHead.y === food.y)
           {
@@ -175,6 +180,7 @@ class snakeScene extends Phaser.Scene {
 
               food.eatFood();
               scoreBoard.innerHTML = food.score;
+              
 
               
               if (food.total% 5 === 0 && this.snakeSpeed > 30) {

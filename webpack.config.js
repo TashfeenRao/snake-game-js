@@ -16,7 +16,7 @@ module.exports = {
         use: require.resolve('raw-loader')
       },
       {
-        test: /\.m?js$/,
+        test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         include: path.resolve(__dirname, 'src/'),
         use: {
@@ -47,7 +47,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'CANVAS_RENDERER': JSON.stringify(true),
-      'WEBGL_RENDERER': JSON.stringify(true)
+      'WEBGL_RENDERER': JSON.stringify(false)
       })
   ]
 };

@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <div>
-    score board
-    <h4 id="score">0</h4>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .parentDiv {
+        float: right;
+        margin-right: 60px;
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parentDiv">
+      <div id="dashboard"></div>
+      <div id="leaderboad"></div>
+      <p>Player Name :</p>
+      <h4 id="playerName"></h4>
+    </div>
 
-  <script src="main.js"></script>
-  
-</body>
+    <div>
+      score board
+      <h4 id="score">0</h4>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
 </html>
