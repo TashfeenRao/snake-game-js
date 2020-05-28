@@ -108,17 +108,17 @@ class snakeScene extends Phaser.Scene {
           if (hitBody) {
             
             this.alive = false;
-            console.log('dead');
             
             const playername = document.getElementById("playerName").innerHTML;
-            console.log(playername)
-            console.log(snake.alive);
-            console.log(food.score);
+            var errors = document.querySelector("#errors")
             
             try {
                 await postUserScore(playername, food.score)
+                errors.innerHTML = '';
+                errors.innerHTML = 'score has been saved succesfully';
             }catch (error) {
-                console.log(error)
+                errors.innerHTML = '';
+                errors.innerHTML = 'error';
             }
             
 

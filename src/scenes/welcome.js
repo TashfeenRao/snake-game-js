@@ -26,6 +26,8 @@ class welcomeScene extends Phaser.Scene {
     opsBtn.style.display = 'none'
 
     var restartBtn = document.querySelector("#gameRestart")
+
+    var errors = document.querySelector("#errors")
     
 
     const userInput = document.querySelector("#user-form");
@@ -36,9 +38,11 @@ class welcomeScene extends Phaser.Scene {
         opsBtn.style.display = 'block'
         this.playerName = event.target.elements[0].value
         this.loadGame()
+        errors.innerHTML = '';
         
       }else{
-        console.log("name empty")
+        errors.innerHTML = '';
+        errors.innerHTML = 'Player name can not be empty'
       }
       
 
@@ -46,16 +50,17 @@ class welcomeScene extends Phaser.Scene {
     restartBtn.addEventListener('click',async () => {
       try {
         const data = await getAllUserScores()
-        console.log(data.data.result)
         const getTable = document.querySelector("#table")
         getTable.innerHTML = ''
         generateTableContent(getTable, data.data.result)
-        generateTableHead(getTable, data.data.result)
+        generateTableHead(getTable)
+        errors.innerHTML = '';
         
 
         
       } catch (error) {
-        console.log(error)
+        errors.innerHTML = '';
+        errors.innerHTML = 'error';
         
       }
 

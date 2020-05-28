@@ -43,16 +43,19 @@ const generateTableContent = (table, mydata) => {
   
   });
 }
-const generateTableHead = (table, mydata) => {
+const generateTableHead = (table) => {
     const thead = table.createTHead();
     const row = thead.insertRow();
-    const data = Object.keys(mydata[0]);
-    data.forEach((key) => {
-      const th = document.createElement('th');
-      const text = document.createTextNode(key.toUpperCase());
-      th.appendChild(text);
-      row.appendChild(th);
-    });
+
+    const th = document.createElement('th');
+    const text = document.createTextNode("score".toUpperCase());
+    th.appendChild(text);
+
+    const th1 = document.createElement('th');
+    const text1 = document.createTextNode("user".toUpperCase());
+    th1.appendChild(text1);
+    
+    row.append(th, th1);
   
 }
 
