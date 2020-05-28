@@ -88,7 +88,7 @@ Copy the following instructions sequentially into your terminal
 
 - Run `npm install`
 
-- Run **_npm run start_** in your terminal to fire the Webpack server
+- Run **_npm run start-dev_** in your terminal to fire the Webpack server
 
 - Visit http://localhost:8080 on your browser.
 

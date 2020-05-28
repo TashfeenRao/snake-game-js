@@ -6,8 +6,10 @@
   "scripts": {
     "test": "jest",
     "build": "webpack",
-    "start": "webpack-dev-server --open",
-    "watch": "webpack --watch"
+    "start-dev": "webpack-dev-server --open",
+    "watch": "webpack --watch", 
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,8 @@
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "axios": "^0.19.2",
-    "phaser": "^3.2.1"
+    "express": "^4.17.1",
+    "phaser": "^3.2.1",
+    "serve-static": "^1.14.1"
   }
 }
