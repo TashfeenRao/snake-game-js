@@ -1,4 +1,4 @@
-import { postUserScore, getAllUserScores } from "../src/utils/dashboard";
+import { postUserScore, getAllUserScores } from '../src/utils/dashboard';
 
 
 test('should successfully create the player and score given name and score', async () => {
