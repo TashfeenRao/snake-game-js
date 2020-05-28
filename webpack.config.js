@@ -12,8 +12,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: [ /\.vert$/, /\.frag$/ ],
-        use: require.resolve('raw-loader')
+        test: [/\.vert$/, /\.frag$/],
+        use: require.resolve('raw-loader'),
       },
       {
         test: /\.js$/,
@@ -24,18 +24,18 @@ module.exports = {
           options: {
             presets: [
               [
-                "@babel/preset-env", {
-                  "targets": {
-                    "node": "current"
-                  }
-                }
-              ]
-              
-            ]
-          }
-        }
-      }
-    ]
+                '@babel/preset-env', {
+                  targets: {
+                    node: 'current',
+                  },
+                },
+              ],
+
+            ],
+          },
+        },
+      },
+    ],
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
@@ -44,19 +44,19 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { 
+        {
           from: path.resolve(__dirname, 'index.html'),
-          to: path.resolve(__dirname, 'dist')
+          to: path.resolve(__dirname, 'dist'),
         },
         {
           from: path.resolve(__dirname, 'assets', '**', '*'),
-          to: path.resolve(__dirname, 'dist')
-        }
+          to: path.resolve(__dirname, 'dist'),
+        },
       ],
     }),
     new webpack.DefinePlugin({
-      'CANVAS_RENDERER': JSON.stringify(true),
-      'WEBGL_RENDERER': JSON.stringify(false)
-      })
-  ]
+      CANVAS_RENDERER: JSON.stringify(true),
+      WEBGL_RENDERER: JSON.stringify(false),
+    }),
+  ],
 };

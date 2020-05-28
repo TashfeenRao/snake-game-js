@@ -1,28 +1,26 @@
 import Phaser from 'phaser';
-import snakeScene from "./scenes/snake";
-import welcomeScene from "./scenes/welcome"
-
+import SnakeScene from './scenes/snake';
+import WelcomeScene from './scenes/welcome';
 
 
 // Our game scene
-var gameScene = new snakeScene();
-var entryScene = new welcomeScene();
+const GameScene = new SnakeScene();
+const EntryScene = new WelcomeScene();
 
 const gameConfig = {
   type: Phaser.AUTO,
   width: 640,
   height: 480,
-  backgroundColor: '#b9eaff'
-  
+  backgroundColor: '#b9eaff',
+
 };
 
-var game =new Phaser.Game(gameConfig);
+const game = new Phaser.Game(gameConfig);
 
 
 // load scenes
-game.scene.add('welcomeScene', entryScene);
-game.scene.add("snakeScene", gameScene);
+game.scene.add('welcomeScene', EntryScene);
+game.scene.add('snakeScene', GameScene);
 
 // start title
 game.scene.start('welcomeScene');
-
