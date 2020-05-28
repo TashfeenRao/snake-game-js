@@ -102,7 +102,7 @@ Copy the following instructions sequentially into your terminal
 
 ## Live Version
 
-- You can view the app hosted online [here]().
+- You can view the app hosted online [here](https://tranquil-springs-70646.herokuapp.com/).
 
 <!-- FUTURE IMPROVEMENTS -->
 
