@@ -32,13 +32,15 @@ const generateTableContent = (table, mydata) => {
 
   mydata.forEach((element) => {
     const row = tbody.insertRow();
-    Object.keys(element).forEach((key) => {
-      if (key) {
-        const cell = row.insertCell();
-        const text = document.createTextNode(element[key]);
-        cell.appendChild(text);
-      }
-    });
+
+    const cell = row.insertCell();
+    const text = document.createTextNode(element.score);
+    cell.appendChild(text);
+
+    const cell1 = row.insertCell();
+    const text1 = document.createTextNode(element.user);
+    cell1.appendChild(text1);
+  
   });
 }
 const generateTableHead = (table, mydata) => {
