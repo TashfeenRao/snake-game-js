@@ -1,6 +1,7 @@
 const express = require('express');
 const serveStatic = require('serve-static');
 const path = require('path');
+
 const port = process.env.PORT || 8080;
 const app = express();
 
@@ -13,5 +14,3 @@ app.get(/.*/, (req, res) => {
 });
 
 app.listen(port);
-
-console.log(`app is listening on port: ${port}`);
