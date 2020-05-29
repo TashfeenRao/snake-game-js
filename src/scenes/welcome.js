@@ -49,7 +49,8 @@ class WelcomeScene extends Phaser.Scene {
         const data = await getAllUserScores();
         const getTable = document.querySelector('#table');
         getTable.innerHTML = '';
-        generateTableContent(getTable, data.data.result);
+        const datasort = data.data.result.sort((a, b) => parseFloat(a.score) - parseFloat(b.score)).reverse();
+        generateTableContent(getTable, datasort);
         generateTableHead(getTable);
         errors.innerHTML = '';
       } catch (error) {
