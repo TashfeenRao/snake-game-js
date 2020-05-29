@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const postUserScore = async (user, score) => {
   try {
-    const result = await axios.post('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/lPWqQoQcYd4fux1yduna/scores/', {
+    const result = await axios.post('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/5WETt4y1HPaTr22QH4WI/scores/', {
       user,
       score,
     });
@@ -14,7 +14,7 @@ const postUserScore = async (user, score) => {
 };
 const getAllUserScores = async () => {
   try {
-    const data = await axios.get('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/lPWqQoQcYd4fux1yduna/scores/');
+    const data = await axios.get('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/5WETt4y1HPaTr22QH4WI/scores/');
     return data;
   } catch (error) {
     throw new Error('Unable to get scores at this time');
