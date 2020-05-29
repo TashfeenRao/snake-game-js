@@ -1,16 +1,27 @@
-import Phaser from 'phaser/dist/phaser';
+// eslint-disable-next-line import/no-unresolved
+import Phaser from 'phaser';
+import SnakeScene from './scenes/snake';
+import WelcomeScene from './scenes/welcome';
 
-import SimpleScene from "./scenes/simple-scene";
+
+// Our game scene
+const GameScene = new SnakeScene();
+const EntryScene = new WelcomeScene();
 
 const gameConfig = {
   type: Phaser.AUTO,
-  width: 680,
-  height: 400,
-  physics: {
-    default: 'arcade',
-    arcade: {gravity: { y: 200 }}},
-  scene: SimpleScene,
+  width: 640,
+  height: 480,
+  backgroundColor: '#b9eaff',
+
 };
 
-new Phaser.Game(gameConfig);
+const game = new Phaser.Game(gameConfig);
 
+
+// load scenes
+game.scene.add('welcomeScene', EntryScene);
+game.scene.add('snakeScene', GameScene);
+
+// start title
+game.scene.start('welcomeScene');
