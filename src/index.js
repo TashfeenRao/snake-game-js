@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import Phaser from 'phaser';
 import SnakeScene from './scenes/snake';
 import WelcomeScene from './scenes/welcome';

@@ -1,5 +1,8 @@
+// eslint-disable-next-line import/no-unresolved
 const express = require('express');
+// eslint-disable-next-line import/no-unresolved
 const serveStatic = require('serve-static');
+// eslint-disable-next-line import/no-unresolved
 const path = require('path');
 
 const port = process.env.PORT || 8080;
