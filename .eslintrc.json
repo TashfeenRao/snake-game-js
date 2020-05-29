@@ -9,7 +9,6 @@
     "sourceType": "module"
   },
   "extends": ["airbnb-base"],
-  "ignorePatterns": ["dist"],
   "rules": {
     "no-shadow": "off",
     "no-param-reassign": "off",
